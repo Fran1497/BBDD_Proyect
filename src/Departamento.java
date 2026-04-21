@@ -26,4 +26,13 @@ public class Departamento {
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
+
+
+    @Override
+    public String toString() {
+        return "Departamento{" +
+                "IdDep='" + IdDep + '\'' +
+                ", Nombre='" + Nombre + '\'' +
+                '}';
+    }
 }
