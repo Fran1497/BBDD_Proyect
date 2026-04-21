@@ -50,7 +50,7 @@ public class DAOImpl implements DAO{
             Statement sentencia = conexion.createStatement();
             ResultSet rs = sentencia.executeQuery("select idemp,nombre,apellidos,fechaalta,salario,iddep,idjefe from empleados WHERE iddep='"+depart +"'");
             while (rs.next()){
-                emp = new Empleado(rs.getString(1),rs.getString(2)); // TODO segir haciendo que pille las cosas
+                emp = new Empleado(Integer.parseInt(rs.getString(1)),rs.getString(2)); // TODO segir haciendo que pille las cosas
                 lista.add(emp);
             }
 
