@@ -9,15 +9,18 @@ public class EjemploJDBCPostgreSQL {
         int op;
         Departamento dep;
         String iddep;
+        Empleado emp;
         do {
-            System.out.println("****************MENÚ*********************");
-            System.out.println("* 1. Crear Departamento                 *");
-            System.out.println("* 2. Modificar Departamento             *");
-            System.out.println("* 3. Borrar Departamento                *");
-            System.out.println("* 4. Mostrar departamento               *");
-            System.out.println("* 5. Mostrar todos los Departamentos    *");
-            System.out.println("* 6. Salir                              *");
-            System.out.println("*****************************************");
+            System.out.println("****************MENÚ**********************");
+            System.out.println("* 1. Crear Departamento                  *");
+            System.out.println("* 2. Modificar Departamento              *");
+            System.out.println("* 3. Borrar Departamento                 *");
+            System.out.println("* 4. Mostrar departamento                *");
+            System.out.println("* 5. Mostrar todos los Departamentos     *");
+            System.out.println("* 6. Mostrar empleados de un departamento*");
+            System.out.println("* 7. Mostrar cursos de un departamento   *");
+            System.out.println("* 8. Salir                               *");
+            System.out.println("******************************************");
             System.out.println("Introduce una opción");
             op = Integer.parseInt(sc.nextLine());
             switch (op){
@@ -36,11 +39,25 @@ public class EjemploJDBCPostgreSQL {
                     }
                     break;
                 case 6:
+                    System.out.println("Dime el Departamento de los empleados");
+                    List<Empleado> lista_dep = depDaoImpl.empleadodep(sc.nextLine());
+                    for (Empleado actual : lista_dep){
+                        System.out.println(actual.toString());
+                    }
+                    break;
+                case 7:
+                    System.out.println("Dime el Departamento del Curso");
+                    List<Curso> list_Curso = depDaoImpl.cursodep(sc.nextLine());
+                    for ( Curso actual: list_Curso){
+                        System.out.println(actual.toString());
+                    }
+                    break;
+                case 8:
                     System.out.println("Cerrando aplicación...");
                     break;
                 default:
                     System.out.println("Opción incorrecta!!!");
             }
-        } while (op !=6);
+        } while (op !=8);
     }
 }
