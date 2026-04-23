@@ -12,10 +12,10 @@ public class EjemploJDBCPostgreSQL {
         Empleado emp;
         do {
             System.out.println("****************MENÚ**********************");
-            System.out.println("* 1. Crear Departamento                  *");
-            System.out.println("* 2. Modificar Departamento              *");
-            System.out.println("* 3. Borrar Departamento                 *");
-            System.out.println("* 4. Mostrar departamento                *");
+            System.out.println("* 1. Crear Departamento(NO)              *");
+            System.out.println("* 2. Modificar Departamento(NO)          *");
+            System.out.println("* 3. Borrar Departamento(NO)             *");
+            System.out.println("* 4. Mostrar departamento(NO)            *");
             System.out.println("* 5. Mostrar todos los Departamentos     *");
             System.out.println("* 6. Mostrar empleados de un departamento*");
             System.out.println("* 7. Mostrar cursos de un departamento   *");
