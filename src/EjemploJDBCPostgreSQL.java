@@ -19,7 +19,9 @@ public class EjemploJDBCPostgreSQL {
             System.out.println("* 5. Mostrar todos los Departamentos     *");
             System.out.println("* 6. Mostrar empleados de un departamento*");
             System.out.println("* 7. Mostrar cursos de un departamento   *");
-            System.out.println("* 8. Salir                               *");
+            System.out.println("* 8. Mostrar empleado con más salario    *");
+            System.out.println("* 9. Departamento -> empleados           *");
+            System.out.println("* 20. Salir                              *");
             System.out.println("******************************************");
             System.out.println("Introduce una opción");
             op = Integer.parseInt(sc.nextLine());
@@ -40,8 +42,8 @@ public class EjemploJDBCPostgreSQL {
                     break;
                 case 6:
                     System.out.println("Dime el Departamento de los empleados");
-                    List<Empleado> lista_dep = depDaoImpl.empleadodep(sc.nextLine());
-                    for (Empleado actual : lista_dep){
+                    List<Empleado> lista_emp = depDaoImpl.empleadodep(sc.nextLine());
+                    for (Empleado actual : lista_emp){
                         System.out.println(actual.toString());
                     }
                     break;
@@ -53,11 +55,27 @@ public class EjemploJDBCPostgreSQL {
                     }
                     break;
                 case 8:
+                    List<Empleado> lista_EmpleadoMAX = depDaoImpl.empleadomax();
+                    for (Empleado actual : lista_EmpleadoMAX){
+                        System.out.println(actual.toString());
+                    }
+                case 9:
+                    List<Departamento> lista_DEP = depDaoImpl.read();
+                    for (Departamento actual : lista_DEP){
+                        System.out.println(actual.toString());
+                    }
+                    System.out.println("Elige departamento");
+                    iddep = sc.nextLine();
+                    List<Empleado> lista_empYdep = depDaoImpl.empleadodep(iddep);
+                    for (Empleado actual : lista_empYdep){
+                        System.out.println(actual.toString());
+                    }
+                case 20:
                     System.out.println("Cerrando aplicación...");
                     break;
                 default:
                     System.out.println("Opción incorrecta!!!");
             }
-        } while (op !=8);
+        } while (op !=20);
     }
 }

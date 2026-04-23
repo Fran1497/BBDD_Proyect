@@ -79,4 +79,26 @@ public class DAOImpl implements DAO{
 
         return lista;
     }
+
+    @Override
+    public List<Empleado> empleadomax() {
+        List<Empleado> lista = new ArrayList<>();
+        Empleado emp =null;
+
+        try{
+            Connection conexion = getConexion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet rs = sentencia.executeQuery("select idemp,nombre,apellidos,fechaalta,salario,iddep,idjefe from empleados where salario >= (select max(salario) from empleados)");
+            while (rs.next()){
+                emp = new Empleado(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getString(6),rs.getInt(7));
+                lista.add(emp);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOImpl.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return lista;
+    }
+
+
 }

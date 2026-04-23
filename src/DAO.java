@@ -6,4 +6,6 @@ public interface DAO {
     List<Empleado> empleadodep(String depart);
 
     List<Curso> cursodep(String depart);
+
+    List<Empleado> empleadomax();
 }
